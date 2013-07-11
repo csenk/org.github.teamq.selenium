@@ -1,0 +1,6 @@
+include "selenium-common",
+	"selenium-lift-common",
+	"selenium-lift-gwt",
+	"selenium-lift-gwt-demo",
+	"selenium-lift-gxt",
+	"selenium-lift-gxt-demo"
