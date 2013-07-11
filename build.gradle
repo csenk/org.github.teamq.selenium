@@ -1,0 +1,25 @@
+subprojects {
+	buildscript {
+		repositories {
+			maven {
+				url project.rootProject.file('lib').toURL()
+			}
+			mavenCentral()
+			mavenLocal()
+		}
+		
+		dependencies {
+			classpath group: 'org.github.teamq.gradle', name: 'gwt-plugin', version: '0.0.1-SNAPSHOT'
+		}
+	}
+	
+	apply plugin: 'maven'
+	
+	group = 'org.github.teamq.selenium'
+	version = '0.0.1-SNAPSHOT'
+	
+	repositories {
+		mavenCentral()
+		mavenLocal()
+	}
+}
