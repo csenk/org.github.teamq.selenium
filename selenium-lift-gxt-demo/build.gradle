@@ -1,5 +1,12 @@
 apply plugin: 'java'
 apply plugin: 'gwt'
+apply plugin: 'war'
+
+dependencies {
+	compile gwt.devSDK()
+	compile group: 'com.sencha.gxt', name: 'gxt', version: '3.0.1'
+	compile group: 'com.google.gwt.inject', name: 'gin', version: '2.1.0'
+}
 
 gwt {
 	version = '2.4.0'
