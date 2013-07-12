@@ -1,13 +1,50 @@
 apply plugin: 'java'
 apply plugin: 'gwt'
 apply plugin: 'war'
+apply plugin: 'jetty'
 
-dependencies {
-	compile gwt.devSDK()
-	compile group: 'com.sencha.gxt', name: 'gxt', version: '3.0.1'
-	compile group: 'com.google.gwt.inject', name: 'gin', version: '2.1.0'
-}
+jettyRunWar.daemon = false
 
 gwt {
 	version = '2.4.0'
+	modules = ['com.sencha.gxt.desktopapp.DesktopApp', 'com.sencha.gxt.explorer.Explorer', 'com.sencha.gxt.explorer.ExplorerGray', 'com.sencha.gxt.examples.test.Test']
+}
+
+dependencies {
+	compile gwt.devSDK()
+	
+	compile group: 'org.apache.openjpa', name: 'openjpa-all', version: '2.2.2'
+	compile group: 'org.apache.bval', name: 'bval-jsr303', version: '0.2-incubating'
+	compile group: 'org.hsqldb', name: 'hsqldb', version: '2.0.0'
+	
+	compile group: 'com.sencha.gxt', name: 'gxt', version: '3.0.1'
+	compile group: 'com.sencha.gxt', name: 'gxt-chart', version: '3.0.1'
+	compile group: 'com.sencha.gxt', name: 'uibinder-bridge', version: gwt.version
+	
+	compile group: 'com.google.gwt.inject', name: 'gin', version: '1.5.0'
+	compile group: 'com.google.web.bindery', name: 'requestfactory-apt', version: gwt.version
+}
+
+compileGWT {
+	//see https://groups.google.com/forum/#!msg/google-web-toolkit/h37UOiHUJFM/cMFVIpadZFAJ
+	strict = false
+}
+
+compileDevGWT {
+	//see https://groups.google.com/forum/#!msg/google-web-toolkit/h37UOiHUJFM/cMFVIpadZFAJ
+	strict = false
+}
+
+/**
+ * Custom task that uses 'org.apache.openjpa.enhance.PCEnhancer' to enhance JPA classes.
+ */
+war.dependsOn task(enhanceClasses, type: JavaExec, dependsOn: classes) {
+	classpath(sourceSets.main.runtimeClasspath)
+	main = 'org.apache.openjpa.enhance.PCEnhancer'
+	sourceSets.main.output.asFileTree.matching({
+		include '**/Folder.class'
+		include '**/Music.class' 
+	}).each {
+		args(it)
+	}
 }

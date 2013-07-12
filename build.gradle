@@ -4,8 +4,8 @@ subprojects {
 			maven {
 				url project.rootProject.file('lib').toURL()
 			}
-			mavenCentral()
 			mavenLocal()
+			mavenCentral()
 		}
 		
 		dependencies {
@@ -19,7 +19,7 @@ subprojects {
 	version = '0.0.1-SNAPSHOT'
 	
 	repositories {
-		mavenCentral()
 		mavenLocal()
+		mavenCentral()
 	}
 }

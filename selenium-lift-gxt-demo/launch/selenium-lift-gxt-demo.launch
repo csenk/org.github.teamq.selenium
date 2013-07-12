@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="com.google.gdt.eclipse.suite.webapp">
+<stringAttribute key="com.google.gdt.eclipse.suiteMainTypeProcessor.PREVIOUSLY_SET_MAIN_TYPE_NAME" value="com.google.gwt.dev.DevMode"/>
+<booleanAttribute key="com.google.gdt.eclipse.suiteWarArgumentProcessor.IS_WAR_FROM_PROJECT_PROPERTIES" value="true"/>
+<listAttribute key="com.google.gwt.eclipse.core.ENTRY_POINT_MODULES">
+<listEntry value="com.sencha.gxt.explorer.ExplorerGray"/>
+<listEntry value="com.sencha.gxt.explorer.Explorer"/>
+<listEntry value="com.sencha.gxt.examples.test.Test"/>
+<listEntry value="com.sencha.gxt.desktopapp.DesktopApp"/>
+</listAttribute>
+<stringAttribute key="com.google.gwt.eclipse.core.URL" value="index.html"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/selenium-lift-gxt-demo"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.ui.favoriteGroups">
+<listEntry value="org.eclipse.debug.ui.launchGroup.debug"/>
+<listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="com.google.gwt.eclipse.core.moduleClasspathProvider"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.google.gwt.dev.DevMode"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-remoteUI &quot;${gwt_remote_ui_server_port}:${unique_id}&quot; -startupUrl index.html -logLevel INFO -codeServerPort 9997 -port 8888 -war D:\Projekte\org.github.teamq\selenium\selenium-lift-gxt-demo\build\devWar com.sencha.gxt.desktopapp.DesktopApp com.sencha.gxt.examples.test.Test com.sencha.gxt.explorer.Explorer com.sencha.gxt.explorer.ExplorerGray"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="selenium-lift-gxt-demo"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xmx512m -javaagent:C:\Users\Christian\.gradle\caches\artifacts-23\filestore\org.apache.openjpa\openjpa\2.2.2\bundle\e482a19dfe2f947ce1085ed14a82b1ac66a645e2\openjpa-2.2.2.jar"/>
+</launchConfiguration>
