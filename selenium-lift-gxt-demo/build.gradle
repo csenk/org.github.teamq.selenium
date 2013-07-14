@@ -23,6 +23,9 @@ dependencies {
 	
 	compile group: 'com.google.gwt.inject', name: 'gin', version: '1.5.0'
 	compile group: 'com.google.web.bindery', name: 'requestfactory-apt', version: gwt.version
+	
+	testCompile project(':selenium-lift-gxt')
+	testCompile group: 'junit', name: 'junit', version: '4.11'
 }
 
 compileGWT {
@@ -46,5 +49,16 @@ war.dependsOn task(enhanceClasses, type: JavaExec, dependsOn: classes) {
 		include '**/Music.class' 
 	}).each {
 		args(it)
+	}
+}
+
+test {
+	doFirst {
+		tasks['jettyRunWar'].daemon = true
+		tasks['jettyRunWar'].execute()
+	}
+	doLast {
+		tasks['jettyStop'].execute()
+		tasks['jettyRunWar'].daemon = false
 	}
 }
