@@ -5,6 +5,10 @@ apply plugin: 'jetty'
 
 jettyRunWar.daemon = false
 
+jettyRunWar.daemon = false
+[jettyRunWar,jettyStop]*.stopKey = 'stopKey'
+[jettyRunWar,jettyStop]*.stopPort = 8005
+
 gwt {
 	version = '2.4.0'
 	modules = ['com.sencha.gxt.desktopapp.DesktopApp', 'com.sencha.gxt.explorer.Explorer', 'com.sencha.gxt.explorer.ExplorerGray', 'com.sencha.gxt.examples.test.Test']
@@ -53,7 +57,15 @@ war.dependsOn task(enhanceClasses, type: JavaExec, dependsOn: classes) {
 }
 
 test {
+	dependsOn war 
 	doFirst {
+		//Move gwt-dev to the end, because gwt-dev contains an older class of one of selenium depdencies
+		def gwtDev = classpath.filter {
+			it.name.contains('gwt-dev')
+		}
+		
+		classpath = classpath.minus(gwtDev).plus(gwtDev)
+		
 		tasks['jettyRunWar'].daemon = true
 		tasks['jettyRunWar'].execute()
 	}

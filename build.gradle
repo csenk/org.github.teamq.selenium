@@ -19,6 +19,9 @@ subprojects {
 	version = '0.0.1-SNAPSHOT'
 	
 	repositories {
+		maven {
+			url 'http://cadas-aimdb-artifactory.comsoft.de:30000/artifactory/anyrepo'
+		}
 		mavenLocal()
 		mavenCentral()
 	}
